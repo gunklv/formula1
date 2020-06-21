@@ -39,7 +39,7 @@ function DataModal(props: DataModalProps) {
       }, [f1team != null ? f1team.isFeePaid : false]);
 
     const isValid = () => {
-        return name.length != 0 && (foundationDate !== null && !isNaN(new Date(foundationDate).getTime()) && new Date(foundationDate).getFullYear() >= 1800 && new Date(foundationDate).getFullYear() <= new Date().getUTCFullYear()) && victories == NaN;
+        return name.length != 0 && (foundationDate !== null && !isNaN(new Date(foundationDate).getTime()) && new Date(foundationDate).getFullYear() >= 1800 && new Date(foundationDate).getFullYear() <= new Date().getUTCFullYear()) && victories != NaN;
     }
 
     return (
@@ -80,6 +80,7 @@ function DataModal(props: DataModalProps) {
                                     onChange={setFoundationDate}
                                     invalidDateMessage={null}
                                     minDate={new Date("1800-01-01")}
+                                    minDateMessage={"Past date can not be less than 1800"}
                                     maxDateMessage={"Future date can not be set"}
                                     disableFuture
 
@@ -122,7 +123,8 @@ function DataModal(props: DataModalProps) {
                                         foundationDate,
                                         victories: Number(victories),
                                         isFeePaid} as Formula1Team);
-                                    props.handleClose()
+                                    props.handleClose();
+                                    setName("");setFoundationDate(null);setVictories(0);setIsFeePaid(false);
                                     }}
                                 >
                                 Confirm
