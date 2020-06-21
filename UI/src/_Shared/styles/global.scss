@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'SalesforceSans-Regular', sans-serif;
+}
+
+.Toastify{
+    &__toast{
+    color: #fff;
+        &--success{
+            background-color: #c4ecd2;
+        }
+
+        &--error{
+            background-color: #3f51b5;
+        }
+    }
+        &__close-button{
+        color: #fff;
+    }
+}
