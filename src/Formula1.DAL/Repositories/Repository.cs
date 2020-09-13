@@ -16,34 +16,34 @@ namespace DAL.Repositories
 
         public Repository(DataContext context) => _context = context;
 
-        public async Task Create(TEntity entity)
+        public void Create(TEntity entity)
         {
-            await _context.Set<TEntity>().AddAsync(entity);
+            _context.Set<TEntity>().Add(entity);
         }
 
-        public async Task Delete(Guid id)
+        public async Task DeleteAsync(Guid id)
         {
             var e = await _context.Set<TEntity>().FindAsync(id);
             _context.Set<TEntity>().Remove(e);
         }
 
-        public async Task Update(TEntity entity)
+        public async Task UpdateAsync(TEntity entity)
         {
             var e = await _context.Set<TEntity>().FindAsync(entity.Id);
             _context.Entry(e).CurrentValues.SetValues(entity);
         }
 
-        public async Task<TEntity> GetById(Guid id)
+        public async Task<TEntity> GetByIdAsync(Guid id)
         {
             return await _context.Set<TEntity>().FindAsync(id);
         }
 
-        public async Task<List<TEntity>> GetAll()
+        public async Task<List<TEntity>> GetAllAsync()
         {
             return await _context.Set<TEntity>().AsQueryable<TEntity>().ToListAsync();
         }
 
-        public async Task<List<TEntity>> Filter(Expression<Func<TEntity, bool>> predicate)
+        public async Task<List<TEntity>> FilterAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await _context.Set<TEntity>().Where(predicate).ToListAsync();
         }

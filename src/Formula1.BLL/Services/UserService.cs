@@ -15,7 +15,7 @@ namespace BLL.Services
             _userRepository = userRepository;
         }
 
-        public async Task<User> GetUser(string userName)
-            => (await _userRepository.Filter(u => u.UserName == userName)).FirstOrDefault();
+        public async Task<User> GetUserAsync(string userName)
+            => (await _userRepository.FilterAsync(u => u.UserName == userName)).FirstOrDefault();
     }
 }

@@ -13,7 +13,7 @@ namespace API.Validators
             RuleFor(x => x.Password).NotNull();
             RuleFor(x => x).MustAsync(async (x, _) =>
             {
-                var dbUser = await userService.GetUser(x.UserName);
+                var dbUser = await userService.GetUserAsync(x.UserName);
                 if (dbUser == null) return false;
 
                 var incomingPassword = Hasher.Hash(x.Password, dbUser.Salt);

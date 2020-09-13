@@ -5,6 +5,6 @@ namespace BLL.Contracts.Services
 {
     public interface IUserService
     {
-        Task<User> GetUser(string userName);
+        Task<User> GetUserAsync(string userName);
     }
 }

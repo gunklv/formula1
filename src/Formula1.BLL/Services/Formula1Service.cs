@@ -18,23 +18,23 @@ namespace BLL.Services
         }
 
         public async Task<List<Formula1Team>> GetFormula1s()
-            => await _formula1Repository.GetAll();
+            => await _formula1Repository.GetAllAsync();
 
         public async Task CreateFormula1Team(Formula1Team formula1Team)
         {
-            await _formula1Repository.Create(formula1Team);
+            _formula1Repository.Create(formula1Team);
             await _formula1Repository.SaveChangesAsync();
         }
 
         public async Task DeleteFormula1Team(Guid id)
         {
-            await _formula1Repository.Delete(id);
+            await _formula1Repository.DeleteAsync(id);
             await _formula1Repository.SaveChangesAsync();
         }
 
         public async Task UpdateFormula1Team(Formula1Team formula1Team)
         {
-            await _formula1Repository.Update(formula1Team);
+            await _formula1Repository.UpdateAsync(formula1Team);
             await _formula1Repository.SaveChangesAsync();
         }
     }
